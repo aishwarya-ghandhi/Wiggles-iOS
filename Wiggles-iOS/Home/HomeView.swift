@@ -21,19 +21,23 @@ struct HomeView: View {
                             VStack(alignment: .leading) {
                                 Text("Hey Sameer,").modifier(SailecFont(.bold, size: 24))
                                     .foregroundColor(Color.text_primary_color).padding(.top, 16)
+                                    .accessibilityIdentifier("greetingText")
                                 Text("Adopt a new friend near you!").modifier(SailecFont(.regular, size: 18))
                                     .foregroundColor(Color.text_primary_color).padding(.top, 4)
+                                    .accessibilityIdentifier("subText")
                             }
                             Spacer()
                         }
                         Text("Nearby results").modifier(SailecFont(.bold, size: 14))
                             .foregroundColor(Color.text_primary_color)
                             .padding(.top, 24).padding(.bottom, 8)
+                            .accessibilityIdentifier("nearbyResultsText")
                         ForEach(viewModel.dogsList) { model in
                             NavigationLink(destination: DetailsView(model: model), label: {
                                 HomeListModelView(image: model.image, name: model.name, age: model.age,
                                                   about: model.about, location: model.location, gender: model.gender).padding(.bottom, 4)
                             })
+                            .accessibilityIdentifier("dogCard_\(model.name)")
                         }
                     }
                     Spacer()

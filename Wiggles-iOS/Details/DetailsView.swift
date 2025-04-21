@@ -26,36 +26,47 @@ struct DetailsView: View {
                         ZStack(alignment: .top) {
                             Image(viewModel.model.image).resizable()
                                 .frame(height: 400).frame(maxWidth: .infinity)
+                                .accessibilityIdentifier("dogImage")
+                            
                             HStack {
                                 Button(action: { self.presentationMode.wrappedValue.dismiss() },
                                        label: { Image(IMAGE_BACK_ICON).resizable().frame(width: 34, height: 34) })
+                                .accessibilityIdentifier("backButton")
+                                
                                 Spacer()
                                 Button(action: { viewModel.favouriteMethod() },
                                        label: { Image(IMAGE_FAV_ICON).resizable().frame(width: 26, height: 26) })
+                                .accessibilityIdentifier("favouriteButton")
                             }.padding(.horizontal, 24).padding(.top, 46)
                         }
                         Group {
                             HStack {
                                 Text(viewModel.model.name).modifier(SailecFont(.bold, size: 24)).lineLimit(1)
                                     .foregroundColor(Color.text_primary_color)
+                                    .accessibilityIdentifier("dogName")
                                 Spacer()
                                 GenderView(isMale: viewModel.model.gender == "male")
+                                    .accessibilityIdentifier("dogGender")
                             }.padding(.vertical, 8)
                             
                             HStack(alignment: .center) {
                                 HStack(alignment: .center, spacing: 2) {
                                     Image(IMAGE_LOC_ICON).resizable().frame(width: 24, height: 24)
+                                        .accessibilityIdentifier("locationIcon")
                                     Text("\(viewModel.model.location) away").modifier(SailecFont(.regular, size: 14))
                                         .foregroundColor(Color.text_primary_color).padding(.top, 2)
+                                        .accessibilityIdentifier("locationText")
                                 }
                                 Spacer()
                                 Text("\(viewModel.model.age) yrs | \(viewModel.model.about)").modifier(SailecFont(.regular, size: 14))
                                     .lineLimit(1).foregroundColor(Color.text_primary_color)
+                                    .accessibilityIdentifier("dogAge")
                             }
                             
                             HStack {
                                 Text("12 min ago").modifier(SailecFont(.regular, size: 14))
                                     .foregroundColor(Color.text_primary_color)
+                                    .accessibilityIdentifier("postedTime")
                                 Spacer()
                             }.padding(.leading, 6).padding(.top, 2)
                             
@@ -63,10 +74,12 @@ struct DetailsView: View {
                                 HStack {
                                     Text("My Story").modifier(SailecFont(.bold, size: 18))
                                         .foregroundColor(Color.text_primary_color)
+                                        .accessibilityIdentifier("myStoryTitle")
                                     Spacer()
                                 }
                                 Text(viewModel.story).modifier(SailecFont(.regular, size: 16))
                                     .foregroundColor(Color.text_primary_color)
+                                    .accessibilityIdentifier("dogStory")
                             }.padding(.vertical, 16)
                             
                             VStack(spacing: 16) {
@@ -86,6 +99,7 @@ struct DetailsView: View {
                                 HStack {
                                     Text("Owner Info").modifier(SailecFont(.bold, size: 18))
                                         .foregroundColor(Color.text_primary_color)
+                                        .accessibilityIdentifier("ownerInfoTitle")
                                     Spacer()
                                 }
                                 DetailsOwnerView(image: viewModel.model.owner.image, name: viewModel.model.owner.name, bio: viewModel.model.owner.bio, messageMethod: viewModel.messageMethod)
@@ -96,6 +110,7 @@ struct DetailsView: View {
                                 .frame(height: 50).frame(maxWidth: .infinity)
                                 .background(Color.main_color).cornerRadius(8)
                                 .padding(.vertical, 24)
+                                .accessibilityIdentifier("adoptMeButton")
                             
                         }.padding(.horizontal, 16).padding(.top, 8)
                     }.background(Color.primary_color)
