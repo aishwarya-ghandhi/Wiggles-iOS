@@ -49,13 +49,6 @@ To run the tests:
 
 ## Notes
 
-### ✅ Test Suite Execution Video
-A video showcasing the successful execution of all UI tests is available here:
-
-📹 [`Wiggles_iOS_UITests_SuccessfulExecution.mov`](./Wiggles-iOSUITests/test-results/Wiggles_iOS_UITests_SuccessfulExecution.mov)
-
----
-
 ### 🕵️‍♀️ Exploratory Testing Conducted
 
 - Verified navigation logic and UI consistency across screens.
